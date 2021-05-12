@@ -25,11 +25,11 @@ TCP_Remote_Count=$(ss -antH | awk '$1!~/LISTEN/{IP[$5]++} END{ for(i in IP){prin
 TCP_Port_Count=$(ss -antH | sed -r 's/ +/ /g' | awk -F"[ :]" '$1!~/LISTEN/{port[$5]++} END{for(i in port){print port[i],i}}' | sort -nr)
 
 #定义输出颜色.
-SUCCESS="echo -en \\033[1;32m"   #绿色.
-NORMAL="echo -en \\033[0;39m"    #黑色.
+SUCCESS="echo -en \\033[1;32m" #绿色.
+NORMAL="echo -en \\033[0;39m"  #黑色.
 
 #显示TCP连接总数.
-tcp_total(){
+tcp_total() {
     echo -n "TCP连接总数: "
     $SUCCESS
     echo "$TCP_Total"
@@ -37,7 +37,7 @@ tcp_total(){
 }
 
 #显示处于LISTEN状态的TCP端口个数.
-tcp_listen(){
+tcp_listen() {
     echo -n "处于LISTEN状态的TCP端口个数: "
     $SUCCESS
     echo "$TCP_Listen_Total"
@@ -45,7 +45,7 @@ tcp_listen(){
 }
 
 #显示处于ESTABLISHED状态的TCP连接个数.
-tcp_estab(){
+tcp_estab() {
     echo -n "处于ESTAB状态的TCP连接个数: "
     $SUCCESS
     echo "$TCP_Estab_Total"
@@ -53,7 +53,7 @@ tcp_estab(){
 }
 
 #显示处于SYN-RECV状态的TCP连接个数.
-tcp_syn_recv(){
+tcp_syn_recv() {
     echo -n "处于SYN-RECV状态的TCP连接个数: "
     $SUCCESS
     echo "$TCP_SYN_RECV_Total"
@@ -61,7 +61,7 @@ tcp_syn_recv(){
 }
 
 #显示处于TIME-WAIT状态的TCP连接个数.
-tcp_time_wait(){
+tcp_time_wait() {
     echo -n "处于TIME-WAIT状态的TCP连接个数: "
     $SUCCESS
     echo "$TCP_TIME_WAIT_Total"
@@ -69,7 +69,7 @@ tcp_time_wait(){
 }
 
 #显示处于TIME-WAIT1状态的TCP连接个数.
-tcp_time_wait1(){
+tcp_time_wait1() {
     echo -n "处于TIME-WAIT1状态的TCP连接个数: "
     $SUCCESS
     echo "$TCP_TIME_WAIT1_Total"
@@ -77,7 +77,7 @@ tcp_time_wait1(){
 }
 
 #显示处于TIME-WAIT2状态的TCP连接个数.
-tcp_time_wait2(){
+tcp_time_wait2() {
     echo -n "处于TIME-WAIT2状态的TCP连接个数: "
     $SUCCESS
     echo "$TCP_TIME_WAIT2_Total"
@@ -85,7 +85,7 @@ tcp_time_wait2(){
 }
 
 #显示UDP连接总数.
-udp_total(){
+udp_total() {
     echo -n "UDP连接总数: "
     $SUCCESS
     echo "$UDP_Total"
@@ -93,7 +93,7 @@ udp_total(){
 }
 
 #显示Unix sockets连接总数.
-unix_total(){
+unix_total() {
     echo -n "Unix sockets连接总数: "
     $SUCCESS
     echo "$Unix_sockets_Total"
@@ -101,7 +101,7 @@ unix_total(){
 }
 
 #显示每个远程主机的访问次数.
-remote_count(){
+remote_count() {
     echo "每个远程主机与本机的并发连接数: "
     $SUCCESS
     echo "$TCP_Remote_Count"
@@ -109,14 +109,14 @@ remote_count(){
 }
 
 #显示每个端口的并发连接数.
-port_count(){
+port_count() {
     echo "每个端口的并发连接数: "
     $SUCCESS
     echo "$TCP_Port_Count"
     $NORMAL
 }
 
-print_info(){
+print_info() {
     echo -e "------------------------------------------------------"
     $1
 }

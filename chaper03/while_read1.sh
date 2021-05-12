@@ -4,7 +4,6 @@
 #read定义7个变量,分别对应/etc/passwd每行数据中的7列.
 
 IFS=":"
-while read user pass uid gid info home shell
-do
+while read user pass uid gid info home shell; do
     echo -e "My UID:$uid,\tMy home:$home"
-done < /etc/passwd
+done </etc/passwd

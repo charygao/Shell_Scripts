@@ -27,31 +27,26 @@ Average_PV=$(echo "scale=2;$PV/$UV" | bc)
 
 #统计每个IP的访问次数.
 declare -A IP
-while read ip other
-do
+while read ip other; do
     let IP[$ip]+=1
-done < $logfile
+done <$logfile
 
 #统计各种HTTP状态码的个数,如404报错的次数,500错误的次数等.
 declare -A STATUS
-while read ip dash user time zone method file protocol code size other
-do
+while read ip dash user time zone method file protocol code size other; do
     let STATUS[$code]++
-done < $logfile
+done <$logfile
 
 #统计累计网页字节大小.
-while read ip dash user time zone method file protocol code size other
-do
+while read ip dash user time zone method file protocol code size other; do
     let Body_size+=$size
-done < $logfile
-
+done <$logfile
 
 #统计热点数据
 declare -A URI
-while read ip dash user time zone method file protocol code size other
-do
+while read ip dash user time zone method file protocol code size other; do
     let URI[$file]++
-done < $logfile
+done <$logfile
 
 echo -e "\033[91m\t日志分析数据报表\033[0m"
 
@@ -67,9 +62,8 @@ echo -e "累计访问字节数: $GREEN_COL$Body_size$NONE_COL Byte"
 
 #显示指定的HTTP状态码数量.
 $line
-for i in 200 404 500
-do
-    if [ ${STATUS[$i]} ];then
+for i in 200 404 500; do
+    if [ ${STATUS[$i]} ]; then
         echo -e "$i状态码次数:$GREEN_COL ${STATUS[$i]} $NONE_COL"
     else
         echo -e "$i状态码次数:$GREEN_COL 0 $NONE_COL"
@@ -78,19 +72,17 @@ done
 
 #显示每个IP的访问次数.
 $line
-for i in ${!IP[@]}
-do
+for i in ${!IP[@]}; do
     printf "%-15s的访问次数为: $GREEN_COL%s$NONE_COL\n" $i ${IP[$i]}
 done
 echo
 
 #显示访问量大于500的URI
 echo -e "$GREEN_COL访问量大于500的URI:$NONE_COL"
-for i in "${!URI[@]}"
-do
-    if [ ${URI["$i"]} -gt 500 ];then
+for i in "${!URI[@]}"; do
+    if [ ${URI["$i"]} -gt 500 ]; then
         echo "-----------------------------------"
-        echo  "$i"
+        echo "$i"
         echo "${URI[$i]}次"
         echo "-----------------------------------"
     fi

@@ -12,12 +12,12 @@ b[b]=22
 #在函数体内定义新的关联数组为局部变量.
 
 function demo() {
-a=(xx yy zz)
-declare -A b
-b[a]=88
-b[b]=99
-echo ${a[@]}
-echo ${b[@]}
+    a=(xx yy zz)
+    declare -A b
+    b[a]=88
+    b[b]=99
+    echo ${a[@]}
+    echo ${b[@]}
 }
 
 demo

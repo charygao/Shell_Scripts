@@ -4,8 +4,7 @@
 date_time=$(date +'%Y-%m-%dT%H:%M:%S%z')
 
 function check_services() {
-    for i in "$@"
-    do
+    for i in "$@"; do
         if systemctl --quiet is-active ${i}.service; then
             echo -e "[$date_time)]: \033[92mservice $i is active\033[0m"
         else

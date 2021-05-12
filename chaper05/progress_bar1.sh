@@ -5,9 +5,8 @@
 trap 'kill $!' INT
 
 #定义函数:实现无限显示不换行的#符号.
-bar(){
-    while :
-    do
+bar() {
+    while :; do
         echo -n '#'
         sleep 0.3
     done

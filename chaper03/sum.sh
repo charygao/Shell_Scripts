@@ -1,9 +1,9 @@
 #!/bin/bash
 #功能描述(Description):计算等差数列之和1+2+3+...+100.
 
-sum=0;i=1
-while [ $i -le 100 ]
-do
+sum=0
+i=1
+while [ $i -le 100 ]; do
     let sum+=$i
     let i++
 done

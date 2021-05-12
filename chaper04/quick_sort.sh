@@ -5,10 +5,10 @@
 num=(5 3 8 4 7 9 2)
 
 #定义一个可以递归调用的快速排序的函数.
-quick_sort(){
+quick_sort() {
     #先判断需要比较的数字个数,$1是数组最左边的坐标,$2是数组最右边的坐标.
     #左边的坐标要小于右边坐标,否则表示需要排序的数字只有一个,不需要排序可以直接退出函数.
-    if [ $1 -ge $2 ];then
+    if [ $1 -ge $2 ]; then
         return
     fi
 
@@ -19,20 +19,17 @@ quick_sort(){
     local right=$2
 
     #把要排序的数字序列中,比基准数大的放右边,比基准数小的放左边.
-    while [ $left -lt $right ]
-    do
+    while [ $left -lt $right ]; do
         #right向左移动,找比基准数(base)小的元素.
-        while [[ ${num[right]} -ge $base && $left -lt $right ]]
-        do
+        while [[ ${num[right]} -ge $base && $left -lt $right ]]; do
             let right--
         done
         #left向右移动,找比基准数(base)大的元素.
-        while [[ ${num[left]} -le $base && $left -lt $right ]]
-        do
+        while [[ ${num[left]} -le $base && $left -lt $right ]]; do
             let left++
         done
         #将left坐标元素和right坐标元素交换.
-        if [ $left -lt $right ];then
+        if [ $left -lt $right ]; then
             local tmp=${num[$left]}
             num[$left]=${num[right]}
             num[$right]=$tmp
@@ -44,9 +41,9 @@ quick_sort(){
     num[left]=$base
 
     #递归调用快速排序算法,对i左边的元素实施快速排序工作.
-    quick_sort $1 $[left-1]
+    quick_sort $1 $((left - 1))
     #递归调用快速排序算法,对i右边的元素实施快速排序工作.
-    quick_sort $[left+1] $2
+    quick_sort $((left + 1)) $2
 }
 
 #调用函数对数组排序,排序后输出数组的所有元素.

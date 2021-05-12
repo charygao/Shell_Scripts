@@ -6,8 +6,7 @@ mkfifo $pipefile
 exec 12<>$pipefile
 
 #通过文件描述符往命名管道中写入5行任意数据,用于控制进程数量.
-for i in {1..5}
-do
+for i in {1..5}; do
     echo "" >&12 &
 done
 
@@ -16,8 +15,7 @@ done
 #因为命名管道中只要5行数据,读取5行后read会被阻塞,也就无法继续启动sleep进程.
 #每当任意一个sleep进程结束,就通过文件描述符再写入任意数据到命名管道.
 #当管道中有数据后,read则可以继续读取数据,继续开启新的进程,依次类推.
-for j in {1..20}
-do
+for j in {1..20}; do
     read -u12
     {
         echo -e "\033[32mstart sleep No.$j\033[0m"

@@ -7,12 +7,10 @@
 #到了第九天,猴子发现只剩一根香蕉了,
 #请问这只猴子在第一天总共摘了多少根香蕉?
 
-
 ##初始化香蕉数量为1,也就是第九天香蕉数位1.
 #每循环一次计算前一天的香蕉数量,循环8次得到第一天的香蕉数量.
 banana=1
-for i in {1..8}
-do
-    banana=$[(banana+1)*2]
+for i in {1..8}; do
+    banana=$(((banana + 1) * 2))
 done
-    echo $banana
+echo $banana

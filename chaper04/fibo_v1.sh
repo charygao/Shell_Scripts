@@ -4,8 +4,7 @@
 
 fibo=(1 1)
 read -p "请输入需要计算的斐波那契数的个数:" num
-for ((i=2;i<=$num;i++))
-do
-    let fibo[$i]=fibo[$i-1]+fibo[$i-2]
+for ((i = 2; i <= $num; i++)); do
+    let fibo[$i]=fibo[$i - 1]+fibo[$i - 2]
 done
 echo ${fibo[@]}

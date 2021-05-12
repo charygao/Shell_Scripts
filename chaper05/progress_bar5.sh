@@ -10,8 +10,7 @@ dst=0
 
 #定义函数:实时对比源文件与目标文件的大小,计算拷贝进度.
 bar() {
-    while :
-    do
+    while :; do
         size=$(echo "scale=2;$dst/$src*100" | bc)
         echo -en "\r|$size%|"
         [ -f $2 ] && dst=$(du -s $2 | cut -f1)

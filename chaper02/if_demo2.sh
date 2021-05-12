@@ -4,9 +4,8 @@
 #if命令会通过grep命令的返回值自动判断是否过滤到数据。
 
 if grep -q AMD /proc/cpuinfo; then
-echo "AMD CPU"
+    echo "AMD CPU"
 fi
 if grep -q Intel /proc/cpuinfo; then
-echo "Intel CPU"
+    echo "Intel CPU"
 fi
-

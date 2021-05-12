@@ -11,21 +11,18 @@ red_ball=""
 #随机选择1-33的红色球(6个),1-16的篮球(1个).
 #每选出一个号码通过+=的方式存储到变量中.
 #通过grep判断新选出的红球是否已经出现过,-w选项是过滤单词.
-while :
-do
+while :; do
     clear
     echo "---机选双色球---"
-    tmp=$[RANDOM%33+1]
+    tmp=$((RANDOM % 33 + 1))
     echo "$red_ball" | grep -q -w $tmp && continue
     red_ball+=" $tmp"
     echo -en "$RED_COL$red_ball$NONE_COL"
     word=$(echo "$red_ball" | wc -w)
     if [ $word -eq 6 ]; then
-        blue_ball=$[RANDOM%16+1]
+        blue_ball=$((RANDOM % 16 + 1))
         echo -e "$BLUE_COL $blue_ball$NONE_COL"
         break
     fi
     sleep 0.5
 done
-    
-

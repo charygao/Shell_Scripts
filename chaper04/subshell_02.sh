@@ -10,20 +10,20 @@ echo "bash_subshll=$BASH_SUBSHELL."
 
 #通过()开启子Shell.
 (
-echo -e "\t+++++++++++++++"
-echo -e "\t+ 进入子Shell +"
-echo -e "\t+++++++++++++++"
-echo -e "\tbash_subshll=$BASH_SUBSHELL."
+    echo -e "\t+++++++++++++++"
+    echo -e "\t+ 进入子Shell +"
+    echo -e "\t+++++++++++++++"
+    echo -e "\tbash_subshll=$BASH_SUBSHELL."
     (
-    echo -e "\t\t+++++++++++++++"
-    echo -e "\t\t+ 进入子Shell +"
-    echo -e "\t\t+++++++++++++++"
-    echo -e "\t\tbash_subshll=$BASH_SUBSHELL."
-    pstree | grep subshell
+        echo -e "\t\t+++++++++++++++"
+        echo -e "\t\t+ 进入子Shell +"
+        echo -e "\t\t+++++++++++++++"
+        echo -e "\t\tbash_subshll=$BASH_SUBSHELL."
+        pstree | grep subshell
     )
 )
 
-echo  "+++++++++++++++"
-echo  "+ 返回父Shell +"
-echo  "+++++++++++++++"
+echo "+++++++++++++++"
+echo "+ 返回父Shell +"
+echo "+++++++++++++++"
 echo "bash_subshll=$BASH_SUBSHELL."

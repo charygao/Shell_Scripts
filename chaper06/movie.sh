@@ -8,7 +8,7 @@ moviefile="/tmp/movie_"
 listfile="/tmp/list.txt"
 
 #下载首页源码,并获取子页面链接列表.
-curl -s https://www.dytt8.net > $tmpfile
+curl -s https://www.dytt8.net >$tmpfile
 sed -i '/^<a href="http/!d' $tmpfile
 
 #上面进行数据过滤后结果如下,需要继续使用sed将多余的数据清洗掉.
@@ -30,13 +30,12 @@ echo -e "\033[32m正在抓取网站中视频数据的链接.\033[0m"
 echo "根据网站数据量不同,可能需要比较长的时间,请耐心等待..."
 x=1
 y=1
-for i in $(cat $tmpfile)
-do
-    curl -s $i > $pagefile$x
+for i in $(cat $tmpfile); do
+    curl -s $i >$pagefile$x
     #第一行之start:body content之间的所有行删除.
     sed -i '1,/start:body content/d' $pagefile$x
     #删除包含index.html的行.
-    sed -i "/index.html/d" $pagefile$x 
+    sed -i "/index.html/d" $pagefile$x
     #仅保留包含<a href的行,其他行都删除.
     sed -i '/<a href/!d' $pagefile$x
     #清理除网页链接路径之外的字符数据.
@@ -50,14 +49,13 @@ do
     #修改前:/html/gndy/dyzz/20190411/58451.html
     #修改后:https://www.ygdy8.net/html/gndy/dyzz/20190411/58451.html
     sed -i 's#^#https://www.ygdy8.net#' $pagefile$x
-    for j in $(cat $pagefile$x)
-    do
-        curl -s $j > $moviefile$y
+    for j in $(cat $pagefile$x); do
+        curl -s $j >$moviefile$y
         sed -i '/ftp/!d' $moviefile$y
         LANG=C sed -i 's/.*="//' $moviefile$y
         LANG=C sed -i 's/">.*//' $moviefile$y
         #将最终过滤的视频链接保存至$listfile文件.
-        cat $moviefile$y >> $listfile
+        cat $moviefile$y >>$listfile
         let y++
     done
     let x++
@@ -66,4 +64,3 @@ sed -i '/^ftp:/!d' $listfile
 rm -rf $tmpfile
 rm -rf $pagefile
 rm -rf $moviefile
-

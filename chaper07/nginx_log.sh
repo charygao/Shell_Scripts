@@ -17,7 +17,7 @@ read -p "请输入日志文件:" logfile
 echo
 
 #判断日志文件是否存在.
-if [ ! -f $logfile ];then
+if [ ! -f $logfile ]; then
     echo "$logfile文件不存在."
     exit
 fi
@@ -44,7 +44,6 @@ STATUS=$(awk '{IP[$9]++} END{ for(i in IP){print i"状态码的次数:",IP[i]}"\
 #统计累计网页字节大小.
 Body_size=$(awk '{SUM+=$10} END{ print SUM }' $logfile)
 
-
 #统计热点数据,将所有页面的访问次数写入数组,
 #如果访问次数大于500,则显示该页面文件名与具体访问次数.
 # awk '                                    \
@@ -57,7 +56,6 @@ Body_size=$(awk '{SUM+=$10} END{ print SUM }' $logfile)
 #      }                                   \
 # }'  $logfile
 URI=$(awk '{IP[$7]++} END{ for(i in IP){ if(IP[i]>=500) {print i"的访问次数:",IP[i]}}}' $logfile)
-
 
 #从这里开始显示前面获取的各种数据.
 echo -e "\033[91m\t日志分析数据报表\033[0m"

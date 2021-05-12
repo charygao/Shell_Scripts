@@ -3,8 +3,7 @@
 #输出5次whllo world,输出变量i的值.
 
 i=1
-while [ $i -le 5 ]
-do
+while [ $i -le 5 ]; do
     echo "hello world"
     echo "$i"
     let i++

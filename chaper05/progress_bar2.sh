@@ -5,9 +5,8 @@
 trap 'kill $!' INT
 
 #定义函数:实现无限显示不换行的背景色块.
-bar(){
-    while :
-    do
+bar() {
+    while :; do
         echo -ne '\033[42m \033[0m'
         sleep 0.3
     done

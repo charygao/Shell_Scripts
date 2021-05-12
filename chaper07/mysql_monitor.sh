@@ -9,14 +9,14 @@ MYSQL_ADMIN="mysqladmin -u$MYSQL_USER -p$MYSQL_PASS -P$MYSQL_PORT -h$MYSQL_HOST"
 MYSQL_COMM="mysql -u$MYSQL_USER -p$MYSQL_PASS -P$MYSQL_PORT -h$MYSQL_HOST -e"
 
 #定义变量:显示信息的颜色属性.
-SUCCESS="echo -en \\033[1;32m"   #绿色.
-FAILURE="echo -en \\033[1;31m"   #红色.
-WARNING="echo -en \\033[1;33m"   #黄色.
-NORMAL="echo -en \\033[0;39m"    #黑色.
+SUCCESS="echo -en \\033[1;32m" #绿色.
+FAILURE="echo -en \\033[1;31m" #红色.
+WARNING="echo -en \\033[1;33m" #黄色.
+NORMAL="echo -en \\033[0;39m"  #黑色.
 
 #检查数据库服务器状态.
-$MYSQL_ADMIN ping &> /dev/null
-if [ $? -ne 0 ];then
+$MYSQL_ADMIN ping &>/dev/null
+if [ $? -ne 0 ]; then
     $FAILURE
     echo "无法连接数据库服务器"
     $NORMAL

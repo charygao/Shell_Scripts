@@ -4,9 +4,8 @@
 #因为使用默认IFS的值,所以按空格为分隔符,X变量有4个值,for循环4次.
 echo -e "\033[32m案例1:未自定义IFS,对X="a b c d"循环4次结束.\033[0m"
 X="a b c d"
-for i in $X
-do
-   echo "I am $i."
+for i in $X; do
+    echo "I am $i."
 done
 echo
 
@@ -16,9 +15,8 @@ OLD_IFS="$IFS"
 echo -e "\033[32m案例2:自定义IFS为分号,对X="1 2 3 4"循环1次结束.\033[0m"
 IFS=";"
 X="1 2 3 4"
-for i in $X
-do
-   echo "I am $i."
+for i in $X; do
+    echo "I am $i."
 done
 echo
 
@@ -26,9 +24,8 @@ echo
 echo -e "\033[32m案例3:自定义IFS为分号,对X='Jacob;Rose;Vicky;Rick'循环4次结束.\033[0m"
 IFS=";"
 X="Jacob;Rose;Vicky;Rick"
-for i in $X
-do
-   echo "I am $i."
+for i in $X; do
+    echo "I am $i."
 done
 echo
 
@@ -37,8 +34,7 @@ echo
 echo -e "\033[32m案例4:自定义IFS为:分号|句点|冒号,对X=Jacob;Rose.Vicky:Rick循环4次结束.\033[0m"
 IFS=";.:"
 X="Jacob;Rose.Vicky:Rick"
-for i in $X
-do
-   echo "I am $i."
+for i in $X; do
+    echo "I am $i."
 done
 echo

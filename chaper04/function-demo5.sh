@@ -3,11 +3,11 @@
 
 #默认以函数中最后一条命令的状态作为返回码.
 demo1() {
-    uname  -r
+    uname -r
 }
 
 #使用return可以让函数立刻结束,并返回状态码,return的有效范围为0-255.
-demo2(){
+demo2() {
     echo "start demo2"
     return 100
     echo "demo2 end."
