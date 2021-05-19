@@ -91,7 +91,7 @@ init_config() {
 
     #为本地账户创建共享目录/common,修改配置文件指定共享根目录.
     [ ! -d /common/pub ] && mkdir -p /common/pub
-    chmod a+w /common/pub
+    chmod a+w /common/pub # all user write
     grep -q local_root $conf_file || sed -i '$a local_root=/common' $conf_file
 
     #默认客户端通过本地账户访问FTP时

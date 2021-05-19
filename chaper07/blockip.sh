@@ -4,7 +4,7 @@
 #强制退出时关闭所有后台进程.
 trap 'kill $one_pid; kill $five_pid; kill $fifteen_pid; exit' EXIT INT
 
-#日志文件路径.
+#日志文件路径.ubuntu 在/var/log/auth.log* 里面
 LOGFILE=/var/log/secure
 BLOCKFILE=/tmp/blockip.txt
 
